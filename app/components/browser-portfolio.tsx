@@ -816,7 +816,7 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-black border-b border-gray-800 pr-2 md:pr-4 flex items-center overflow-x-auto scrollbar-hide"
+            className="bg-black border-b border-gray-800 pr-2 md:pr-4 md:flex items-center overflow-x-auto scrollbar-hide hidden"
           >
             {tabs.map((tab, index) => (
               <div
