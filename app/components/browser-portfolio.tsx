@@ -756,7 +756,7 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
             className="bg-black border-b border-gray-800 px-4 py-2"
           >
             <div className="flex items-center space-x-3">
-              <div className="flex items-center space-x-1">
+              <div className="hidden md:flex items-center space-x-1">
                 <Button
                   variant="ghost"
                   size="sm"
