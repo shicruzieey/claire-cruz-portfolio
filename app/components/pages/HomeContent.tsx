@@ -249,7 +249,7 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
               {latestWorks.map((work, index) => (
                 <motion.div
                   key={index}
@@ -295,7 +295,7 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
               <p className="text-lg text-white font-clash">Tools and tech I personally use and vouch for.</p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {productPicks.map((product, index) => (
                 <motion.div
                   key={index}
@@ -306,7 +306,7 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
                   className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer"
                   onClick={() => setActiveTab("shop")}
                 >
-                  <div className="h-32 bg-gray-100 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                  <div className="h-32 sm:h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
                     <img 
                       src={product.image} 
                       alt={product.name}
@@ -356,16 +356,17 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
                 are my creativity reviews.
               </p>
             </motion.div>
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => testimonialApi?.scrollPrev()}
-                className="flex-shrink-0 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors touch-manipulation"
+                aria-label="Previous testimonial"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
               </button>
-              <div className="flex-1 max-w-2xl">
+              <div className="flex-1 w-full max-w-2xl">
                 <Carousel className="w-full" setApi={setTestimonialApi}>
                   <CarouselContent>
                     {testimonials.map((testimonial, index) => (
@@ -374,23 +375,23 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
                           initial={{ opacity: 0, y: 30 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.1 }}
-                          className="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
+                          className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-200"
                         >
                           <div className="flex items-center mb-4">
-                            <div className="w-12 h-12 bg-[#76608f] rounded-full flex items-center justify-center text-white font-clash-semibold mr-4">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#76608f] rounded-full flex items-center justify-center text-white font-clash-semibold mr-3 sm:mr-4 flex-shrink-0">
                               {testimonial.avatar}
                             </div>
                             <div>
-                              <h4 className="font-semibold font-clash-semibold">{testimonial.name}</h4>
-                              <p className="text-gray-600 text-sm font-clash">{testimonial.role}</p>
+                              <h4 className="font-semibold font-clash-semibold text-sm sm:text-base">{testimonial.name}</h4>
+                              <p className="text-gray-600 text-xs sm:text-sm font-clash">{testimonial.role}</p>
                             </div>
                           </div>
                           <div className="flex mb-3">
                             {Array.from({ length: testimonial.rating }, (_, i) => (
-                              <Star key={i} className="w-4 h-4 fill-[#76608f] text-[#76608f]" />
+                              <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-[#76608f] text-[#76608f]" />
                             ))}
                           </div>
-                          <p className="text-gray-700 font-clash leading-relaxed">{testimonial.content}</p>
+                          <p className="text-gray-700 font-clash leading-relaxed text-sm sm:text-base">{testimonial.content}</p>
                         </motion.div>
                       </CarouselItem>
                     ))}
@@ -399,7 +400,8 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
               </div>
               <button
                 onClick={() => testimonialApi?.scrollNext()}
-                className="flex-shrink-0 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors touch-manipulation"
+                aria-label="Next testimonial"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 18 15 12 9 6"></polyline>
@@ -419,18 +421,18 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
               <p className="text-lg text-white font-clash">Software and tools I use in my workflow.</p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {tools.map((tool, index) => (
                 <motion.div
                   key={tool.name}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4 + index * 0.05 }}
-                  className="bg-transparent p-6 rounded-lg text-center border border-[#76608f] hover:bg-[#76608f]/5 transition-colors cursor-pointer"
+                  className="bg-transparent p-4 sm:p-6 rounded-lg text-center border border-[#76608f] hover:bg-[#76608f]/5 transition-colors cursor-pointer"
                 >
-                  <div className="text-3xl mb-3">{tool.icon}</div>
-                  <h3 className="font-semibold mb-1 font-clash-semibold text-[#76608f]">{tool.name}</h3>
-                  <p className="text-[#76608f] text-sm font-clash">{tool.category}</p>
+                  <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">{tool.icon}</div>
+                  <h3 className="font-semibold mb-1 font-clash-semibold text-[#76608f] text-sm sm:text-base">{tool.name}</h3>
+                  <p className="text-[#76608f] text-xs sm:text-sm font-clash">{tool.category}</p>
                 </motion.div>
               ))}
             </div>

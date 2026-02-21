@@ -764,16 +764,16 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
                 </Button>
               </div>
 
-              <div className="flex-1 flex items-center bg-gray-900 border border-gray-700 rounded-full px-4 py-2 hover:border-[#76608f] transition-colors">
-                <Lock className="h-4 w-4 text-green-400 mr-2" />
+              <div className="flex-1 flex items-center bg-gray-900 border border-gray-700 rounded-full px-2 sm:px-4 py-1 sm:py-2 hover:border-[#76608f] transition-colors">
+                <Lock className="h-3 w-3 sm:h-4 sm:w-4 text-green-400 mr-1 sm:mr-2 flex-shrink-0" />
                 <Input
                   value={inputUrl}
                   onChange={(e) => setInputUrl(e.target.value)}
                   onKeyDown={handleAddressBarKeyDown}
-                  className="border-0 bg-transparent text-sm focus-visible:ring-0 focus-visible:ring-offset-0 font-poppins text-white placeholder-gray-500"
+                  className="border-0 bg-transparent text-xs sm:text-sm focus-visible:ring-0 focus-visible:ring-offset-0 font-poppins text-white placeholder-gray-500"
                   placeholder="Enter URL or search..."
                 />
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="hidden sm:block">
                   <Button variant="ghost" size="sm" className="h-6 w-6 p-0 ml-2 text-gray-300 hover:text-white">
                     <Star className="h-4 w-4" />
                   </Button>
@@ -816,7 +816,7 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-black border-b border-gray-800 pr-4 flex items-center"
+            className="bg-black border-b border-gray-800 pr-2 md:pr-4 flex items-center overflow-x-auto scrollbar-hide"
           >
             {tabs.map((tab, index) => (
               <div
@@ -831,7 +831,7 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`flex items-center space-x-2 px-4 py-2 border-r border-gray-800 cursor-pointer transition-all duration-200 min-w-0 max-w-[200px] ${
+                  className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 border-r border-gray-800 cursor-pointer transition-all duration-200 min-w-0 max-w-[120px] sm:max-w-[200px] ${
                     activeTab === tab.id
                       ? "bg-gray-900 border-t-2 border-t-[#76608f] shadow-sm"
                       : "hover:bg-gray-900/50 hover:shadow-sm"
@@ -948,28 +948,28 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="bg-black border-b border-gray-800 px-4 py-1 flex items-center space-x-4"
+            className="bg-black border-b border-gray-800 px-2 sm:px-4 py-1 flex items-center space-x-2 sm:space-x-4 overflow-x-auto scrollbar-hide"
           >
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 sm:space-x-3">
               {bookmarks.map((bookmark, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  className="flex items-center space-x-1 px-2 py-1 rounded hover:bg-gray-900/70 cursor-pointer transition-all duration-200"
+                  className="flex items-center space-x-1 px-1 sm:px-2 py-1 rounded hover:bg-gray-900/70 cursor-pointer transition-all duration-200 flex-shrink-0"
                   onClick={() => { window.open(bookmark.url, '_blank', 'noopener,noreferrer'); handleBookmarkClick(bookmark); }}
                   whileHover={{ scale: 1.05, y: -1 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="text-xs">{bookmark.icon}</span>
-                  <span className="hidden sm:inline text-xs text-gray-300 font-clash">{bookmark.name}</span>
+                  <span className="hidden md:inline text-xs text-gray-300 font-clash whitespace-nowrap">{bookmark.name}</span>
                 </motion.div>
               ))}
             </div>
             <div className="flex-1" />
-            <div className="text-xs text-gray-500 font-clash">Visits: {visitCount}</div>
-            <Button variant="ghost" size="sm" className="h-6 w-6 p-0 ml-auto text-gray-300">
+            <div className="text-xs text-gray-500 font-clash hidden sm:block whitespace-nowrap">Visits: {visitCount}</div>
+            <Button variant="ghost" size="sm" className="h-6 w-6 p-0 ml-auto text-gray-300 flex-shrink-0">
               <MoreHorizontal className="h-3 w-3" />
             </Button>
           </motion.div>
@@ -1096,14 +1096,14 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
       {/* Game Sidebar */}
       <AnimatePresence>
         {isGameSidebarOpen && (
-          <div className="absolute right-0 top-[120px] h-[calc(100vh-120px)] z-50 flex justify-end">
+          <div className="fixed inset-0 z-50 flex justify-end">
             <div className="bg-black/50 w-full h-full fixed left-0 top-0" onClick={() => setIsGameSidebarOpen(false)} />
             <motion.div
               initial={{ x: 400, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 400, opacity: 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="relative w-[400px] max-w-full h-full bg-gradient-to-b from-[#241a36] to-[#181022] shadow-2xl flex flex-col"
+              className="relative w-full sm:w-[400px] max-w-full h-full bg-gradient-to-b from-[#241a36] to-[#181022] shadow-2xl flex flex-col"
             >
               <button
                 className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10"
@@ -1111,9 +1111,11 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
               >
                 &times;
               </button>
-              <div className="flex-1 flex flex-col items-center justify-center p-8">
-                <h2 className="text-2xl font-clash-bold mb-4 text-white">🎮 Shi's Flapping</h2>
-                <FlappyBirdGame />
+              <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-8">
+                <h2 className="text-xl sm:text-2xl font-clash-bold mb-4 text-white">🎮 Shi's Flapping</h2>
+                <div className="w-full max-w-[320px]">
+                  <FlappyBirdGame />
+                </div>
               </div>
             </motion.div>
           </div>

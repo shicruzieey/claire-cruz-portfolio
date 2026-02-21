@@ -97,7 +97,7 @@ function ProjectsContent({ setActiveTab, handleOpenProjectTab }: { setActiveTab:
 
         {/* Projects Grid */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8 mb-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -109,7 +109,7 @@ function ProjectsContent({ setActiveTab, handleOpenProjectTab }: { setActiveTab:
                 onClick={() => handleOpenProjectTab(project.id, project.title)}
               >
                 <div
-                  className={`h-64 bg-gradient-to-br ${project.color} relative overflow-hidden flex items-center justify-center`}
+                  className={`h-48 sm:h-56 md:h-64 bg-gradient-to-br ${project.color} relative overflow-hidden flex items-center justify-center`}
                 >
                   <div className="text-white text-6xl opacity-20">
                     {project.title === "Personal Brand Logo" && "S"}
@@ -119,14 +119,14 @@ function ProjectsContent({ setActiveTab, handleOpenProjectTab }: { setActiveTab:
                   </div>
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-clash-semibold text-white mb-2 group-hover:text-[#76608f] transition-colors">
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-clash-semibold text-white mb-2 group-hover:text-[#76608f] transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-white text-sm font-clash leading-relaxed mb-3 line-clamp-2 h-10 overflow-hidden">{project.description}</p>
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm gap-2">
                     <span className="text-[#76608f] font-clash-medium">{project.category}</span>
-                    <span className="text-white font-clash">{project.period}</span>
+                    <span className="text-white font-clash text-xs sm:text-sm">{project.period}</span>
                   </div>
                 </div>
               </motion.div>

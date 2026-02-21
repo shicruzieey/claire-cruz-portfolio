@@ -298,7 +298,7 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                   });
                 }}
               >
-                <span className="text-sm mr-2">
+                <span className="text-sm mr-2 flex-shrink-0">
                   {setup.item.includes("keyboard") && "⌨️"}
                   {setup.item.includes("mouse") && "🖱️"}
                   {setup.item.includes("laptop") && "💻"}
@@ -306,9 +306,9 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                   {setup.item.includes("Show") && "📺"}
                   {setup.item.includes("Coffee") && "☕"}
                 </span>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <span className="font-clash-medium text-white">{setup.item}:</span>
-                  <span className="font-clash text-gray-300 ml-2">{setup.detail}</span>
+                  <span className="font-clash text-gray-300 ml-2 break-words">{setup.detail}</span>
                 </div>
                 {hoveredSetup === index && (
                   <motion.img
@@ -333,7 +333,7 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                       pointerEvents: 'none',
                       zIndex: 50
                     }}
-                    className="w-64 h-40 object-cover rounded-lg shadow-lg border-2 border-[#76608f] bg-black"
+                    className="hidden md:block w-64 h-40 object-cover rounded-lg shadow-lg border-2 border-[#76608f] bg-black"
                   />
                 )}
               </motion.div>
@@ -345,18 +345,18 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col sm:flex-row flex-wrap gap-4"
           >
             <button
               onClick={() => handleOpenProjectTab("personal-brand-logo", "Personal Brand Logo")}
-              className="flex items-center gap-2 px-6 py-2 bg-[#76608f] text-white rounded-lg font-clash-medium shadow-lg hover:shadow-xl hover:bg-[#6a5580] transition-all"
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-[#76608f] text-white rounded-lg font-clash-medium shadow-lg hover:shadow-xl hover:bg-[#6a5580] transition-all w-full sm:w-auto"
             >
               My projects
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
-              onClick={() => {}}
-              className="px-6 py-2 bg-gray-900 text-[#76608f] border border-[#76608f] rounded-lg font-clash-medium shadow-lg hover:shadow-xl hover:bg-gray-800 transition-all"
+              onClick={() => setActiveTab("contact")}
+              className="px-6 py-3 bg-gray-900 text-[#76608f] border border-[#76608f] rounded-lg font-clash-medium shadow-lg hover:shadow-xl hover:bg-gray-800 transition-all w-full sm:w-auto"
             >
               Contact
             </button>
@@ -379,22 +379,22 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
           className="mb-12 text-white"
         >
           <h2 className="text-xl font-clash-bold text-white mb-4">Contact</h2>
-          <div className="space-y-2">
-            <div className="flex items-center">
-              <span className="font-clash-medium text-white w-32">My Instagram:</span>
-              <a href="https://www.instagram.com/ccruzieey/" target="_blank" rel="noopener noreferrer" className="text-[#76608f] hover:text-[#6a5580] font-clash">
+          <div className="space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="font-clash-medium text-white sm:w-32">My Instagram:</span>
+              <a href="https://www.instagram.com/ccruzieey/" target="_blank" rel="noopener noreferrer" className="text-[#76608f] hover:text-[#6a5580] font-clash inline-flex items-center">
                 Connect →
               </a>
             </div>
-            <div className="flex items-center">
-              <span className="font-clash-medium text-white w-32">My Facebook:</span>
-              <a href="https://www.facebook.com/ccruzieey" target="_blank" rel="noopener noreferrer" className="text-[#76608f] hover:text-[#6a5580] font-clash">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="font-clash-medium text-white sm:w-32">My Facebook:</span>
+              <a href="https://www.facebook.com/ccruzieey" target="_blank" rel="noopener noreferrer" className="text-[#76608f] hover:text-[#6a5580] font-clash inline-flex items-center">
                 Connect →
               </a>
             </div>
-            <div className="flex items-center">
-              <span className="font-clash-medium text-white w-32">My Gmail:</span>
-              <a href="mailto:cruzclaire.shi@gmail.com?subject=Portfolio Inquiry&body=Hi Claire,%0D%0A%0D%0AI came across your portfolio and would like to connect.%0D%0A%0D%0ABest regards," className="text-[#76608f] hover:text-[#6a5580] font-clash">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="font-clash-medium text-white sm:w-32">My Gmail:</span>
+              <a href="mailto:cruzclaire.shi@gmail.com?subject=Portfolio Inquiry&body=Hi Claire,%0D%0A%0D%0AI came across your portfolio and would like to connect.%0D%0A%0D%0ABest regards," className="text-[#76608f] hover:text-[#6a5580] font-clash inline-flex items-center break-all">
                 Email Me →
               </a>
             </div>
@@ -415,14 +415,14 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 + index * 0.1 }}
-              className="border-l-2 border-[#76608f] bg-[#76608f]/30 rounded-lg mb-4 p-6"
+              className="border-l-2 border-[#76608f] bg-[#76608f]/30 rounded-lg mb-4 p-4 sm:p-6"
             >
-              <div className="flex items-start justify-between mb-2">
-                <div className="flex-1">
+              <div className="flex flex-col sm:flex-row items-start justify-between mb-2 gap-2">
+                <div className="flex-1 min-w-0">
                   <h3 className="font-clash-semibold text-white">{edu.degree}</h3>
                   <p className="text-[#76608f] font-clash-medium">{edu.school}</p>
                 </div>
-                <span className="text-sm text-white font-clash">{edu.period}</span>
+                <span className="text-sm text-white font-clash whitespace-nowrap">{edu.period}</span>
               </div>
               <p className="text-white font-clash text-sm leading-relaxed">{edu.description}</p>
             </motion.div>
@@ -444,7 +444,7 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + index * 0.1 }}
-                  className="border-l-2 border-[#76608f] bg-[#76608f]/30 rounded-lg mb-4 p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                  className="border-l-2 border-[#76608f] bg-[#76608f]/30 rounded-lg mb-4 p-4 sm:p-6 cursor-pointer hover:shadow-lg transition-shadow"
                   onMouseEnter={() => setHoveredProject(index)}
                   onMouseLeave={() => setHoveredProject(null)}
                   onMouseMove={e => {
@@ -456,13 +456,13 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                   }}
                   onClick={() => handleOpenProjectTab(project.id, project.title)}
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-clash-semibold text-white mb-1">{project.title}</h3>
-                      <p className="text-white text-sm font-clash leading-relaxed mb-3 line-clamp-2 h-10 overflow-hidden">{project.description}</p>
-                      <div className="flex items-center justify-between text-sm">
+                  <div className="flex flex-col sm:flex-row items-start justify-between mb-2 gap-2">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl font-clash-semibold text-white mb-1">{project.title}</h3>
+                      <p className="text-white text-sm font-clash leading-relaxed mb-3 line-clamp-2 overflow-hidden">{project.description}</p>
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm gap-2">
                         <span className="text-[#76608f] font-clash-medium">{project.category}</span>
-                        <span className="text-white font-clash">{project.period}</span>
+                        <span className="text-white font-clash text-xs sm:text-sm">{project.period}</span>
                       </div>
                     </div>
                   </div>
@@ -482,7 +482,7 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                       pointerEvents: 'none',
                       zIndex: 50
                     }}
-                    className="w-64 h-40 object-cover rounded-lg shadow-lg border-2 border-[#76608f] bg-black"
+                    className="hidden md:block w-64 h-40 object-cover rounded-lg shadow-lg border-2 border-[#76608f] bg-black"
                   />
                 )}
               </div>
@@ -505,7 +505,7 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.9 + index * 0.1 }}
-                className="border-l-2 border-[#76608f] bg-[#76608f]/30 rounded-lg mb-4 p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                className="border-l-2 border-[#76608f] bg-[#76608f]/30 rounded-lg mb-4 p-4 sm:p-6 cursor-pointer hover:shadow-lg transition-shadow"
                 onMouseEnter={() => setHoveredProject(index)}
                 onMouseLeave={() => setHoveredProject(null)}
                 onMouseMove={e => {
@@ -517,12 +517,12 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                 }}
                 onClick={() => console.log('Work experience clicked:', work.position)}
               >
-                <div className="flex items-start justify-between mb-2">
-                  <div className="flex-1">
+                <div className="flex flex-col sm:flex-row items-start justify-between mb-2 gap-2">
+                  <div className="flex-1 min-w-0">
                     <h3 className="font-clash-semibold text-white">{work.position}</h3>
                     <p className="text-[#76608f] font-clash-medium">{work.company}</p>
                   </div>
-                  <span className="text-sm text-white font-clash">{work.period}</span>
+                  <span className="text-sm text-white font-clash whitespace-nowrap">{work.period}</span>
                 </div>
                 <p className="text-white font-clash text-sm leading-relaxed">{work.description}</p>
               </motion.div>
@@ -545,14 +545,14 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.0 + index * 0.1 }}
-                className="border-l-2 border-[#76608f] bg-[#76608f]/30 rounded-lg mb-4 p-6"
+                className="border-l-2 border-[#76608f] bg-[#76608f]/30 rounded-lg mb-4 p-4 sm:p-6"
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-2">
+                  <div className="flex-1 min-w-0">
                     <h3 className="font-clash-semibold text-white">{award.title}</h3>
                     <p className="text-[#76608f] font-clash-medium">{award.subtitle}</p>
                   </div>
-                  <span className="text-sm text-white font-clash">{award.year}</span>
+                  <span className="text-sm text-white font-clash whitespace-nowrap">{award.year}</span>
                 </div>
               </motion.div>
             ))}
