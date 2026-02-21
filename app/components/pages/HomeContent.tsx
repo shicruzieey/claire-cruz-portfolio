@@ -359,40 +359,42 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => testimonialApi?.scrollPrev()}
-                className="hidden sm:flex flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 items-center justify-center hover:bg-gray-50 transition-colors touch-manipulation"
+                className="hidden sm:flex flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-200 items-center justify-center hover:bg-gray-50 transition-colors"
                 aria-label="Previous testimonial"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
               </button>
-              <div className="flex-1 w-full max-w-2xl">
+              <div className="w-full max-w-2xl">
                 <Carousel className="w-full" setApi={setTestimonialApi}>
                   <CarouselContent>
                     {testimonials.map((testimonial, index) => (
                       <CarouselItem key={index}>
-                        <motion.div
-                          initial={{ opacity: 0, y: 30 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-200"
-                        >
-                          <div className="flex items-center mb-4">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#76608f] rounded-full flex items-center justify-center text-white font-clash-semibold mr-3 sm:mr-4 flex-shrink-0">
-                              {testimonial.avatar}
+                        <div className="px-1">
+                          <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 min-h-[200px] flex flex-col"
+                          >
+                            <div className="flex items-center mb-4">
+                              <div className="w-12 h-12 bg-[#76608f] rounded-full flex items-center justify-center text-white font-clash-semibold mr-4 flex-shrink-0">
+                                {testimonial.avatar}
+                              </div>
+                              <div className="min-w-0">
+                                <h4 className="font-semibold font-clash-semibold text-base truncate">{testimonial.name}</h4>
+                                <p className="text-gray-600 text-sm font-clash truncate">{testimonial.role}</p>
+                              </div>
                             </div>
-                            <div>
-                              <h4 className="font-semibold font-clash-semibold text-sm sm:text-base">{testimonial.name}</h4>
-                              <p className="text-gray-600 text-xs sm:text-sm font-clash">{testimonial.role}</p>
+                            <div className="flex mb-3">
+                              {Array.from({ length: testimonial.rating }, (_, i) => (
+                                <Star key={i} className="w-4 h-4 fill-[#76608f] text-[#76608f]" />
+                              ))}
                             </div>
-                          </div>
-                          <div className="flex mb-3">
-                            {Array.from({ length: testimonial.rating }, (_, i) => (
-                              <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-[#76608f] text-[#76608f]" />
-                            ))}
-                          </div>
-                          <p className="text-gray-700 font-clash leading-relaxed text-sm sm:text-base">{testimonial.content}</p>
-                        </motion.div>
+                            <p className="text-gray-700 font-clash leading-relaxed text-base flex-1">{testimonial.content}</p>
+                          </motion.div>
+                        </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
@@ -400,7 +402,7 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
               </div>
               <button
                 onClick={() => testimonialApi?.scrollNext()}
-                className="hidden sm:flex flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 items-center justify-center hover:bg-gray-50 transition-colors touch-manipulation"
+                className="hidden sm:flex flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-200 items-center justify-center hover:bg-gray-50 transition-colors"
                 aria-label="Next testimonial"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
