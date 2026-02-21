@@ -360,6 +360,20 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
             >
               Contact
             </button>
+            <button
+              onClick={() => {
+                // Trigger download
+                const link = document.createElement('a');
+                link.href = '/CRUZ_CLAIRE_JESSICA_2026.pdf';
+                link.download = 'CRUZ_CLAIRE_JESSICA_2026.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              className="px-6 py-3 bg-gray-900 text-[#76608f] border border-[#76608f] rounded-lg font-clash-medium shadow-lg hover:shadow-xl hover:bg-gray-800 transition-all w-full sm:w-auto"
+            >
+              Download CV
+            </button>
           </motion.div>
         </motion.section>
 

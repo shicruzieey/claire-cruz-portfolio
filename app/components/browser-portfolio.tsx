@@ -149,6 +149,24 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
     }
   }, [])
 
+  const handleAddBookmark = () => {
+    // Try to add bookmark (only works in some browsers)
+    if (window.sidebar && window.sidebar.addPanel) {
+      // Firefox
+      window.sidebar.addPanel(document.title, window.location.href, '');
+    } else if (window.external && ('AddFavorite' in window.external)) {
+      // IE
+      window.external.AddFavorite(window.location.href, document.title);
+    } else {
+      // Modern browsers - copy URL and show toast
+      navigator.clipboard.writeText(window.location.href);
+      toast({
+        title: "Bookmark this page!",
+        description: "Press Ctrl+D (Cmd+D on Mac) to bookmark. URL copied to clipboard!",
+      });
+    }
+  }
+
   const handleBackClick = () => {
     if (currentHistoryIndex > 0) {
       const newIndex = currentHistoryIndex - 1
@@ -222,9 +240,17 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
   }
 
   const handleDownload = () => {
+    // Trigger CV download
+    const link = document.createElement('a');
+    link.href = '/CRUZ_CLAIRE_JESSICA_2026.pdf';
+    link.download = 'CRUZ_CLAIRE_JESSICA_2026.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
     toast({
       title: "Download started",
-      description: "Resume.pdf is being downloaded...",
+      description: "Claire Cruz CV is being downloaded...",
     })
   }
 
@@ -774,7 +800,13 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
                   placeholder="Enter URL or search..."
                 />
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="hidden sm:block">
-                  <Button variant="ghost" size="sm" className="h-6 w-6 p-0 ml-2 text-gray-300 hover:text-white">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="h-6 w-6 p-0 ml-2 text-gray-300 hover:text-white"
+                    onClick={handleAddBookmark}
+                    title="Bookmark this page"
+                  >
                     <Star className="h-4 w-4" />
                   </Button>
                 </motion.div>
@@ -969,9 +1001,6 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
             </div>
             <div className="flex-1" />
             <div className="text-xs text-gray-500 font-clash hidden sm:block whitespace-nowrap">Visits: {visitCount}</div>
-            <Button variant="ghost" size="sm" className="h-6 w-6 p-0 ml-auto text-gray-300 flex-shrink-0">
-              <MoreHorizontal className="h-3 w-3" />
-            </Button>
           </motion.div>
 
           {/* Content Area */}

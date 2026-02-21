@@ -176,33 +176,31 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
               className="mb-8"
             >
               {/* 'Available for work' badge removed */}
-              <motion.div
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-center mb-4"
+                className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-4 font-clash text-center"
               >
-                {/* Wave emoji - centered on mobile, inline on desktop */}
-                <motion.span
-                  animate={{ rotate: [0, 20, -10, 20, -5, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-                  className="block sm:inline-block sm:align-middle sm:mr-2 text-5xl md:text-6xl mb-4 sm:mb-0"
-                  style={{ display: 'inline-block', originBottom: true }}
-                >
-                  👋
-                </motion.span>
-                <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white font-clash inline-block sm:inline">
-                  Hey, I'm <motion.span
-                    className="text-[#76608f]"
-                    animate={{ opacity: [1, 0.3, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatType: 'loop', ease: 'easeInOut' }}
+                <span className="inline-block align-middle mr-2">
+                  <motion.span
+                    animate={{ rotate: [0, 20, -10, 20, -5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+                    className="inline-block origin-bottom text-5xl md:text-6xl"
+                    style={{ display: 'inline-block' }}
                   >
-                    Claire Cruz
-                  </motion.span>.<br className="sm:hidden" />
-                  <span className="hidden sm:inline"><br /></span>
-                  Welcome!
-                </h1>
-              </motion.div>
+                    👋
+                  </motion.span>
+                </span>
+                Hey, I'm <motion.span
+                  className="text-[#76608f]"
+                  animate={{ opacity: [1, 0.3, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatType: 'loop', ease: 'easeInOut' }}
+                >
+                  Claire Cruz
+                </motion.span>.<br />
+                Welcome!
+              </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
