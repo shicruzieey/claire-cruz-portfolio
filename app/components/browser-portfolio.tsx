@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/navigation"
 import {
@@ -490,205 +490,285 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
     const [score, setScore] = useState(0);
     const [best, setBest] = useState(0);
     const [gameState, setGameState] = useState<'start' | 'playing' | 'gameover'>('start');
-    const [_, setRerender] = useState(0); // for animation
 
     // Game constants
-    const width = 320;
-    const height = 400;
-    const birdX = 60;
-    const birdRadius = 16;
-    const gravity = 0.13;
-    const flap = -4.8;
-    const pipeWidth = 48;
-    const pipeGap = 170;
-    const pipeSpeed = 2.2;
+    const GAME = {
+      width: 320,
+      height: 400,
+      birdX: 60,
+      birdRadius: 16,
+      gravity: 0.5,
+      jumpStrength: -8,
+      pipeWidth: 52,
+      pipeGap: 160,
+      pipeSpeed: 2,
+      pipeSpacing: 200,
+    };
 
-    // Game refs
-    const birdY = useRef(height / 2);
-    const birdV = useRef(0);
-    const pipes = useRef<{ x: number; gapY: number }[]>([]);
-    const animation = useRef<number>();
-    const birdImg = useRef<HTMLImageElement | null>(null);
-    // Load image once
+    // Game state refs (persists across renders)
+    const gameRef = useRef({
+      birdY: GAME.height / 2,
+      birdVelocity: 0,
+      pipes: [] as { x: number; gapY: number; scored: boolean }[],
+      isRunning: false,
+      currentScore: 0,
+      currentBest: 0,
+      currentGameState: 'start' as 'start' | 'playing' | 'gameover',
+    });
+
+    const animationRef = useRef<number>();
+    const birdImgRef = useRef<HTMLImageElement | null>(null);
+
+    // Load bird image
     useEffect(() => {
       const img = new window.Image();
       img.src = '/images/profile/claire.jpg';
-      birdImg.current = img;
+      img.onload = () => {
+        birdImgRef.current = img;
+      };
     }, []);
 
-    // Reset game
-    const reset = () => {
-      setScore(0);
-      birdY.current = height / 2;
-      birdV.current = 0;
-      pipes.current = [
-        { x: width + 180, gapY: 110 + Math.random() * 140 },
-        { x: width + 380, gapY: 110 + Math.random() * 140 },
+    // Initialize game
+    const initGame = () => {
+      gameRef.current.birdY = GAME.height / 2;
+      gameRef.current.birdVelocity = 0;
+      gameRef.current.pipes = [
+        { x: GAME.width + 100, gapY: 150 + Math.random() * 100, scored: false },
+        { x: GAME.width + 100 + GAME.pipeSpacing, gapY: 150 + Math.random() * 100, scored: false },
       ];
+      gameRef.current.isRunning = false;
+      gameRef.current.currentScore = 0;
+      gameRef.current.currentGameState = 'start';
+      setScore(0);
       setGameState('start');
     };
 
-    // Flap
-    const handleFlap = () => {
-      if (gameState === 'start') {
+    // Handle jump/flap
+    const jump = () => {
+      const game = gameRef.current;
+      
+      if (game.currentGameState === 'start') {
+        game.isRunning = true;
+        game.birdVelocity = GAME.jumpStrength;
+        game.currentGameState = 'playing';
         setGameState('playing');
-        birdV.current = flap; // Immediately apply flap velocity
-      } else if (gameState === 'playing') {
-        birdV.current = flap;
-      } else if (gameState === 'gameover') {
-        reset();
+      } else if (game.currentGameState === 'playing' && game.isRunning) {
+        game.birdVelocity = GAME.jumpStrength;
+      } else if (game.currentGameState === 'gameover') {
+        initGame();
       }
     };
 
-    // Keyboard
+    // Keyboard controls
     useEffect(() => {
-      const onKey = (e: KeyboardEvent) => {
-        if (e.code === 'Space') {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.code === 'Space' || e.key === ' ') {
           e.preventDefault();
-          handleFlap();
+          jump();
         }
       };
-      window.addEventListener('keydown', onKey);
-      return () => window.removeEventListener('keydown', onKey);
-    });
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }, []);
 
-    // Game loop
+    // Main game loop - runs once on mount
     useEffect(() => {
-      const ctx = canvasRef.current?.getContext('2d');
-      if (!ctx) return;
-      let frame = 0;
-      function draw() {
-        if (!ctx) return;
-        // BG
-        const grad = ctx!.createLinearGradient(0, 0, 0, height);
-        grad.addColorStop(0, '#241a36');
-        grad.addColorStop(1, '#181022');
-        ctx!.fillStyle = grad;
-        ctx!.fillRect(0, 0, width, height);
-        // Pipes
-        ctx!.save();
-        ctx!.shadowColor = '#a18cd1';
-        ctx!.shadowBlur = 12;
-        ctx!.fillStyle = '#a18cd1';
-        pipes.current.forEach(pipe => {
-          ctx!.fillRect(pipe.x, 0, pipeWidth, pipe.gapY - pipeGap / 2);
-          ctx!.fillRect(pipe.x, pipe.gapY + pipeGap / 2, pipeWidth, height - (pipe.gapY + pipeGap / 2));
-        });
-        ctx!.restore();
-        // Bird
-        ctx!.save();
-        ctx!.translate(birdX, birdY.current);
-        ctx!.beginPath();
-        ctx!.arc(0, 0, birdRadius, 0, 2 * Math.PI);
-        ctx!.clip();
-        if (birdImg.current && birdImg.current.complete) {
-          ctx!.drawImage(birdImg.current, -birdRadius, -birdRadius, birdRadius * 2, birdRadius * 2);
-        } else {
-          ctx!.fillStyle = '#bfaee0';
-          ctx!.fill();
-        }
-        ctx!.restore();
-        // Bird border
-        ctx!.save();
-        ctx!.translate(birdX, birdY.current);
-        ctx!.beginPath();
-        ctx!.arc(0, 0, birdRadius, 0, 2 * Math.PI);
-        ctx!.strokeStyle = '#76608f';
-        ctx!.lineWidth = 3;
-        ctx!.stroke();
-        ctx!.restore();
-        // Score
-        ctx!.font = 'bold 32px Poppins, sans-serif';
-        ctx!.fillStyle = '#fff';
-        ctx!.textAlign = 'center';
-        ctx!.fillText(score.toString(), width / 2, 54);
-        ctx!.font = '16px Poppins, sans-serif';
-        ctx!.fillStyle = '#bfaee0';
-        ctx!.fillText(`Best: ${best}`, width / 2, 78);
-        // State overlays
-        if (gameState === 'start') {
-          ctx!.font = 'bold 22px Poppins, sans-serif';
-          ctx!.fillStyle = '#fff';
-          ctx!.fillText('Press Space to Start', width / 2, height / 2);
-        } else if (gameState === 'gameover') {
-          ctx!.font = 'bold 28px Poppins, sans-serif';
-          ctx!.fillStyle = '#fff';
-          ctx!.fillText('Game Over', width / 2, height / 2 - 10);
-          ctx!.font = '18px Poppins, sans-serif';
-          ctx!.fillText('Press Space to Restart', width / 2, height / 2 + 28);
-        }
-      }
-      function update() {
-        if (gameState !== 'playing') return;
-        // Bird
-        birdV.current += gravity;
-        birdY.current += birdV.current;
-        // Clamp bird to top
-        if (birdY.current - birdRadius < 0) {
-          birdY.current = birdRadius;
-          birdV.current = 0;
-        }
-        // Pipes
-        pipes.current.forEach(pipe => (pipe.x -= pipeSpeed));
-        // Add new pipe
-        if (pipes.current[0].x < -pipeWidth) {
-          pipes.current.shift();
-          pipes.current.push({ x: width, gapY: 90 + Math.random() * 180 });
-          setScore(s => s + 1);
-        }
-        // Collision
-        let hit = false;
-        pipes.current.forEach(pipe => {
-          if (
-            birdX + birdRadius > pipe.x &&
-            birdX - birdRadius < pipe.x + pipeWidth &&
-            (birdY.current - birdRadius < pipe.gapY - pipeGap / 2 ||
-              birdY.current + birdRadius > pipe.gapY + pipeGap / 2)
-          ) {
-            hit = true;
-          }
-        });
-        // Only end game if bird hits the ground
-        if (birdY.current + birdRadius > height) hit = true;
-        if (hit) {
-          setGameState('gameover');
-          setBest(b => (score > b ? score : b));
-        }
-      }
-      function loop() {
-        update();
-        draw();
-        setRerender(r => r + 1); // force rerender for UI
-        if (gameState === 'playing') animation.current = requestAnimationFrame(loop);
-      }
-      draw();
-      if (gameState === 'playing') animation.current = requestAnimationFrame(loop);
-      return () => cancelAnimationFrame(animation.current!);
-      // eslint-disable-next-line
-    }, [gameState, score]);
+      const canvas = canvasRef.current;
+      const ctx = canvas?.getContext('2d');
+      if (!ctx || !canvas) return;
 
-    // Reset on mount
-    useEffect(() => { reset(); }, []);
+      const gameLoop = () => {
+        const game = gameRef.current;
+
+        // Clear canvas
+        const gradient = ctx.createLinearGradient(0, 0, 0, GAME.height);
+        gradient.addColorStop(0, '#241a36');
+        gradient.addColorStop(1, '#181022');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, GAME.width, GAME.height);
+
+        // Update game state if playing
+        if (game.currentGameState === 'playing' && game.isRunning) {
+          // Update bird
+          game.birdVelocity += GAME.gravity;
+          game.birdY += game.birdVelocity;
+
+          // Keep bird in bounds (top)
+          if (game.birdY < GAME.birdRadius) {
+            game.birdY = GAME.birdRadius;
+            game.birdVelocity = 0;
+          }
+
+          // Check ground collision
+          if (game.birdY + GAME.birdRadius >= GAME.height) {
+            game.isRunning = false;
+            game.currentGameState = 'gameover';
+            if (game.currentScore > game.currentBest) {
+              game.currentBest = game.currentScore;
+              setBest(game.currentScore);
+            }
+            setGameState('gameover');
+          }
+
+          // Update pipes
+          let hitPipe = false;
+          game.pipes.forEach(pipe => {
+            pipe.x -= GAME.pipeSpeed;
+
+            // Score when bird passes pipe
+            if (!pipe.scored && pipe.x + GAME.pipeWidth < GAME.birdX) {
+              pipe.scored = true;
+              game.currentScore++;
+              setScore(game.currentScore);
+            }
+
+            // Check collision with this pipe
+            if (
+              game.isRunning &&
+              GAME.birdX + GAME.birdRadius > pipe.x &&
+              GAME.birdX - GAME.birdRadius < pipe.x + GAME.pipeWidth
+            ) {
+              const topPipeBottom = pipe.gapY - GAME.pipeGap / 2;
+              const bottomPipeTop = pipe.gapY + GAME.pipeGap / 2;
+
+              if (
+                game.birdY - GAME.birdRadius < topPipeBottom ||
+                game.birdY + GAME.birdRadius > bottomPipeTop
+              ) {
+                hitPipe = true;
+              }
+            }
+          });
+
+          if (hitPipe) {
+            game.isRunning = false;
+            game.currentGameState = 'gameover';
+            if (game.currentScore > game.currentBest) {
+              game.currentBest = game.currentScore;
+              setBest(game.currentScore);
+            }
+            setGameState('gameover');
+          }
+
+          // Remove off-screen pipes and add new ones
+          if (game.pipes[0] && game.pipes[0].x < -GAME.pipeWidth) {
+            game.pipes.shift();
+            game.pipes.push({
+              x: game.pipes[game.pipes.length - 1].x + GAME.pipeSpacing,
+              gapY: 120 + Math.random() * 160,
+              scored: false,
+            });
+          }
+        }
+
+        // Draw pipes
+        ctx.save();
+        ctx.shadowColor = '#a18cd1';
+        ctx.shadowBlur = 10;
+        game.pipes.forEach(pipe => {
+          ctx.fillStyle = '#a18cd1';
+          // Top pipe
+          ctx.fillRect(pipe.x, 0, GAME.pipeWidth, pipe.gapY - GAME.pipeGap / 2);
+          // Bottom pipe
+          ctx.fillRect(
+            pipe.x,
+            pipe.gapY + GAME.pipeGap / 2,
+            GAME.pipeWidth,
+            GAME.height - (pipe.gapY + GAME.pipeGap / 2)
+          );
+        });
+        ctx.restore();
+
+        // Draw bird
+        ctx.save();
+        ctx.translate(GAME.birdX, game.birdY);
+        ctx.beginPath();
+        ctx.arc(0, 0, GAME.birdRadius, 0, Math.PI * 2);
+        
+        // Draw bird image or fallback color
+        if (birdImgRef.current?.complete) {
+          ctx.clip();
+          ctx.drawImage(
+            birdImgRef.current,
+            -GAME.birdRadius,
+            -GAME.birdRadius,
+            GAME.birdRadius * 2,
+            GAME.birdRadius * 2
+          );
+        } else {
+          ctx.fillStyle = '#bfaee0';
+          ctx.fill();
+        }
+        
+        // Bird border
+        ctx.strokeStyle = '#76608f';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        ctx.restore();
+
+        // Draw score
+        ctx.font = 'bold 36px Poppins, sans-serif';
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.fillText(game.currentScore.toString(), GAME.width / 2, 60);
+        
+        ctx.font = '14px Poppins, sans-serif';
+        ctx.fillStyle = '#bfaee0';
+        ctx.fillText(`Best: ${game.currentBest}`, GAME.width / 2, 85);
+
+        // Draw game state messages
+        if (game.currentGameState === 'start') {
+          ctx.font = 'bold 20px Poppins, sans-serif';
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText('Press Space to Start', GAME.width / 2, GAME.height / 2);
+        } else if (game.currentGameState === 'gameover') {
+          ctx.font = 'bold 32px Poppins, sans-serif';
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText('Game Over!', GAME.width / 2, GAME.height / 2 - 20);
+          ctx.font = '16px Poppins, sans-serif';
+          ctx.fillText('Press Space to Restart', GAME.width / 2, GAME.height / 2 + 20);
+        }
+
+        animationRef.current = requestAnimationFrame(gameLoop);
+      };
+
+      // Initialize and start game loop
+      initGame();
+      gameLoop();
+
+      return () => {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+        }
+      };
+    }, []); // Empty dependency array - runs once
 
     return (
       <div className="flex flex-col items-center w-full">
         <canvas
           ref={canvasRef}
-          width={width}
-          height={height}
-          className="rounded-lg shadow-lg border-2 border-[#76608f] bg-[#241a36]"
+          width={GAME.width}
+          height={GAME.height}
+          onClick={jump}
+          className="rounded-lg shadow-lg border-2 border-[#76608f] bg-[#241a36] cursor-pointer"
           style={{ display: 'block', margin: '0 auto' }}
         />
         <div className="mt-4 text-white font-clash text-center flex flex-col items-center gap-2">
-          <div>Score: <span className="font-bold">{score}</span></div>
-          <div className="text-xs text-[#bfaee0]">Best: <span className="font-bold">{best}</span></div>
-          <div className="text-xs text-[#bfaee0]">Press <b>Space</b> to flap!</div>
+          <div className="text-lg">
+            Score: <span className="font-bold text-[#76608f]">{score}</span>
+          </div>
+          <div className="text-sm text-[#bfaee0]">
+            Best: <span className="font-bold">{best}</span>
+          </div>
+          <div className="text-xs text-[#bfaee0] mt-1">
+            Press <span className="font-bold">Space</span> or <span className="font-bold">Click</span> to flap!
+          </div>
           {gameState === 'gameover' && (
             <button
-              className="mt-2 px-4 py-1 bg-[#76608f] text-white rounded font-clash hover:bg-[#a18cd1] transition-colors shadow"
-              onClick={reset}
+              className="mt-3 px-6 py-2 bg-[#76608f] text-white rounded-lg font-clash-medium hover:bg-[#a18cd1] transition-colors shadow-lg"
+              onClick={jump}
             >
-              Restart
+              Play Again
             </button>
           )}
         </div>
