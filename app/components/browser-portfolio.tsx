@@ -433,6 +433,8 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
     setDynamicTabs(prev => [...prev, newTab]);
     setTabOrder(prev => [...prev, newId]);
     setActiveTab(newId);
+    setCurrentUrl('https://shigraphics.dev/playground');
+    setInputUrl('https://shigraphics.dev/playground');
   };
 
   const renderContent = () => {
@@ -948,6 +950,16 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
                       <span className="font-clash text-sm">{tab.title}</span>
                     </button>
                   ))}
+                  <button
+                    onClick={() => {
+                      handleAddPlaygroundTab();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-gray-300 hover:bg-gray-800 transition-colors"
+                  >
+                    <span className="text-lg">🎨</span>
+                    <span className="font-clash text-sm">Playground</span>
+                  </button>
                   <div className="pt-2 mt-2 border-t border-gray-700">
                     <button
                       onClick={() => {
