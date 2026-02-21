@@ -49,8 +49,71 @@ export default function PlaygroundContent({ setActiveTab }: { setActiveTab?: (ta
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-8 pt-8 text-white"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-8 pt-8 text-white"
         >
+          <div className="text-center md:text-left">
+            <h3 className="font-clash-semibold text-white mb-3">Index</h3>
+            <ul className="space-y-2 text-gray-600 font-clash text-sm">
+              <li>
+                <button onClick={() => setActiveTab?.("home")} className="hover:text-[#76608f] transition-colors text-white">
+                  Main Home
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab?.("about")} className="hover:text-[#76608f] transition-colors text-white">
+                  Bio
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab?.("contact")} className="hover:text-[#76608f] transition-colors text-white">
+                  Contact
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div className="text-center md:text-left">
+            <h3 className="font-clash-semibold text-white mb-3">Resources</h3>
+            <ul className="space-y-2 text-gray-600 font-clash text-sm">
+              <li>
+                <button onClick={() => setActiveTab?.("projects")} className="hover:text-[#76608f] transition-colors text-white">
+                  Project
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab?.("shop")} className="hover:text-[#76608f] transition-colors text-white">
+                  Product
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab?.("tools")} className="hover:text-[#76608f] transition-colors text-white">
+                  Tools
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div className="text-center md:text-left">
+            <h3 className="font-clash-semibold text-white mb-3">Contact</h3>
+            <ul className="space-y-2 text-gray-600 font-clash text-sm">
+              <li>
+                <a href="mailto:cruzclaire.shi@gmail.com" className="hover:text-[#76608f] transition-colors text-white">Email</a>
+              </li>
+              <li>
+                <a href="https://calendly.com/clairecruz/meeting" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Set a Meeting</a>
+              </li>
+            </ul>
+          </div>
+          <div className="text-center md:text-left">
+            <h3 className="font-clash-semibold text-white mb-3">Portfolio</h3>
+            <ul className="space-y-2 text-gray-600 font-clash text-sm">
+              <li>
+                <a href="https://dribbble.com/clairecruz" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Dribbble</a>
+              </li>
+              <li>
+                <a href="https://behance.net/clairecruz" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Behance</a>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
           <div>
             <h3 className="font-clash-semibold text-white mb-4">Index</h3>
             <ul className="space-y-2 text-gray-600 font-clash text-sm">
