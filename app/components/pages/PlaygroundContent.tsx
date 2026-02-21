@@ -1,6 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-export default function PlaygroundContent() {
+export default function PlaygroundContent({ setActiveTab }: { setActiveTab?: (tab: string) => void }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#181022] to-[#241a36]">
       {/* Floating purple background elements */}
@@ -22,6 +23,106 @@ export default function PlaygroundContent() {
           ))}
         </div>
         <p className="mt-8 text-gray-400 text-center">These are just for fun! Add your real designs here later.</p>
+
+        {/* Footer timestamp */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-center pt-16 border-t border-gray-200 mt-16 text-white"
+        >
+          <p className="text-2xl font-clash-bold text-white mb-2">
+            {new Date().toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            })}
+          </p>
+          <p className="text-white font-clash text-sm">Local time in Zambales, Philippines</p>
+        </motion.div>
+
+        {/* Footer Links */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-8 pt-8 text-white"
+        >
+          <div>
+            <h3 className="font-clash-semibold text-white mb-4">Index</h3>
+            <ul className="space-y-2 text-gray-600 font-clash text-sm">
+              <li>
+                <button onClick={() => setActiveTab?.("home")} className="hover:text-[#76608f] transition-colors text-white">
+                  Main Home
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab?.("about")} className="hover:text-[#76608f] transition-colors text-white">
+                  Bio
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab?.("contact")} className="hover:text-[#76608f] transition-colors text-white">
+                  Contact
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-clash-semibold text-white mb-4">Resources</h3>
+            <ul className="space-y-2 text-gray-600 font-clash text-sm">
+              <li>
+                <button onClick={() => setActiveTab?.("projects")} className="hover:text-[#76608f] transition-colors text-white">
+                  Project
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab?.("shop")} className="hover:text-[#76608f] transition-colors text-white">
+                  Product
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab?.("tools")} className="hover:text-[#76608f] transition-colors text-white">
+                  Tools
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-clash-semibold text-white mb-4">Contact</h3>
+            <ul className="space-y-2 text-gray-600 font-clash text-sm">
+              <li>
+                <a href="mailto:cruzclaire.shi@gmail.com" className="hover:text-[#76608f] transition-colors text-white">Email</a>
+              </li>
+              <li>
+                <a href="https://calendly.com/clairecruz/meeting" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Set a Meeting</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-clash-semibold text-white mb-4">Portfolio</h3>
+            <ul className="space-y-2 text-gray-600 font-clash text-sm">
+              <li>
+                <a href="https://dribbble.com/clairecruz" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Dribbble</a>
+              </li>
+              <li>
+                <a href="https://behance.net/clairecruz" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Behance</a>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
+          className="text-center mt-8 pt-8 pb-6 border-t border-gray-200 text-white"
+        >
+          <p className="text-white font-clash text-sm">© 2025 Claire Cruz</p>
+        </motion.div>
       </div>
     </div>
   );

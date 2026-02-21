@@ -464,7 +464,7 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
 
     // Render Playground tab content
     if (activeTab.startsWith('playground-')) {
-      return <PlaygroundContent />;
+      return <PlaygroundContent setActiveTab={setActiveTab} />;
     }
 
     switch (activeTab) {
