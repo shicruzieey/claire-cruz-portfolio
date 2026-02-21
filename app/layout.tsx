@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/clairecruz-logo.png" type="image/png" />
+        <link rel="icon" href="/images/profile/clairecruz-logo.png" type="image/png" />
       </head>
       <body className={`${poppins.variable} font-poppins`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

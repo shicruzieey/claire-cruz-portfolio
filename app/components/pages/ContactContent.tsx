@@ -201,7 +201,7 @@ function ContactContent() {
             <h3 className="font-clash-semibold text-white mb-4">Contact</h3>
             <ul className="space-y-2 text-gray-300 font-clash text-sm">
               <li>
-                <a href="mailto:hello@clairecruz.dev" className="hover:text-[#76608f] transition-colors text-white">Email</a>
+                <a href="mailto:cruzclaire.shi@gmail.com" className="hover:text-[#76608f] transition-colors text-white">Email</a>
               </li>
               <li>
                 <a href="https://calendly.com/clairecruz/meeting" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Set a Meeting</a>

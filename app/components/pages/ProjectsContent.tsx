@@ -5,75 +5,75 @@ import { X } from "lucide-react";
 function ProjectsContent({ setActiveTab, handleOpenProjectTab }: { setActiveTab: (tab: string) => void, handleOpenProjectTab: (projectId: string, projectTitle: string) => void }) {
   const projects = [
     {
-      id: "personal-brand-logo",
-      title: "Personal Brand Logo",
+      id: "davids-salon",
+      title: "David's Salon Operations Management System",
       description:
-        "A symbolic monogram formed from the letter S and two mirrored Cs, representing my nickname, Shi, and my initials.",
-      category: "Logo Design, Brand Identity",
-      period: "June 2024",
+        "A comprehensive salon management system featuring web admin panel, mobile apps for clients and stylists, and an AI-powered hairstyle recommendation kiosk.",
+      category: "Mobile App & Web Development",
+      period: "June 2025 - February 2026",
       image: "/placeholder.svg?height=300&width=400",
-      color: "from-gray-800 to-gray-900",
-      technologies: ["Adobe Illustrator", "Adobe Photoshop", "Figma"],
-      role: "Lead Designer",
-      team: "Solo Project",
-      challenges: "Creating a unique monogram that represents both 'Shi' and 'Claire Cruz' while maintaining simplicity and memorability.",
-      solutions: "Designed a minimalist logo combining the letter S with mirrored Cs, creating a balanced and recognizable brand identity.",
+      color: "from-purple-500 to-pink-600",
+      technologies: ["React.js", "React Native", "Tailwind CSS", "Firebase", "OpenAI API"],
+      role: "Mobile App & Web Developer, UI/UX Designer",
+      team: "OJT Team Project",
+      challenges: "Designing and developing three interconnected systems with real-time synchronization and AI integration.",
+      solutions: "Implemented Firebase for real-time data sync and integrated OpenAI API for personalized recommendations.",
       liveUrl: "#",
       githubUrl: "#",
-      features: ["Brand Identity", "Logo Design", "Style Guide", "Mockups"]
+      features: ["Appointment Scheduling", "POS System", "Inventory Management", "CRM", "Analytics", "AI Recommendations"]
     },
     {
-      id: "coin",
-      title: "COIN",
+      id: "copit",
+      title: "COPit - Competitive Thrift Shopping App",
       description:
-        "COIN is a competitive thrift shopping web app that gamifies secondhand buying through a unique blue-clock and leaderboard system.",
-      category: "E-commerce",
-      period: "March 2024 - April 2024",
+        "2nd Place Winner at 'Automate the Future' Hackathon. A competitive thrift shopping mobile app with Mine-Steal-Lock and bidding system.",
+      category: "Mobile App Development",
+      period: "March 2025 - April 2025",
       image: "/placeholder.svg?height=300&width=400",
       color: "from-sage-400 to-sage-600",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "Socket.io"],
-      role: "Full Stack Developer",
-      team: "3 Developers",
-      challenges: "Implementing real-time bidding system with countdown timers and managing concurrent users.",
-      solutions: "Built a robust real-time system using Socket.io for live updates and implemented a queue system for bid management.",
+      technologies: ["HTML", "CSS", "JavaScript", "Figma"],
+      role: "Front-End Developer & UI/UX Designer",
+      team: "Duo Project",
+      challenges: "Creating an engaging competitive shopping experience with real-time interactions.",
+      solutions: "Designed innovative Mine-Steal-Lock system with responsive UI focused on user engagement.",
       liveUrl: "#",
       githubUrl: "#",
-      features: ["Real-time Bidding", "User Authentication", "Payment Integration", "Leaderboard System", "Mobile Responsive"]
+      features: ["Mine-Steal-Lock System", "Real-time Bidding", "Leaderboard", "Mobile Responsive"]
     },
     {
-      id: "mag-gramtees",
-      title: "Mag-Gramtees",
+      id: "mag-grantees",
+      title: "Mag-Grantees: Scholarship Management System",
       description:
-        "Development of a web-based application designed to help streamline scholarship management for scholars.",
+        "A comprehensive scholarship management system for streamlining scholarship tracking, academic performance monitoring, and document submission.",
       category: "Web Development",
       period: "August 2024 - November 2024",
       image: "/placeholder.svg?height=300&width=400",
       color: "from-purple-400 to-purple-600",
-      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
-      role: "Frontend Developer",
-      team: "4 Developers",
-      challenges: "Creating an intuitive interface for scholarship management with complex data relationships.",
-      solutions: "Designed a user-friendly dashboard with role-based access control and comprehensive reporting features.",
+      technologies: ["HTML", "CSS", "JavaScript", "Figma"],
+      role: "Front-End Developer & UI/UX Designer",
+      team: "Group Project",
+      challenges: "Creating an intuitive interface for complex scholarship data management with multiple user roles.",
+      solutions: "Designed user-friendly dashboard with role-based access, optimized for responsiveness.",
       liveUrl: "#",
       githubUrl: "#",
-      features: ["Dashboard Analytics", "Document Management", "Notification System", "Reporting Tools", "Role-based Access"]
+      features: ["Dashboard Analytics", "Document Management", "Performance Tracking", "User Roles"]
     },
     {
       id: "svms",
-      title: "SVMS",
-      description: "A web-based system developed to streamline the reporting and management of student violations.",
+      title: "Student Violation Management System",
+      description: "A web-based system for Lyceum of Subic Bay's Office of Student Affairs to streamline reporting and management of student violations.",
       category: "Web Development",
       period: "January 2024 - April 2024",
       image: "/placeholder.svg?height=300&width=400",
       color: "from-purple-800 to-purple-900",
-      technologies: ["React", "Node.js", "MySQL", "Express", "Bootstrap"],
-      role: "Full Stack Developer",
-      team: "2 Developers",
-      challenges: "Designing a secure system for handling sensitive student data while maintaining ease of use for administrators.",
-      solutions: "Implemented role-based authentication, data encryption, and an intuitive admin interface for violation management.",
+      technologies: ["HTML", "CSS", "JavaScript", "MySQL"],
+      role: "Front-End Developer & UI/UX Designer",
+      team: "Group Project",
+      challenges: "Designing a secure system for handling sensitive student data while maintaining ease of use.",
+      solutions: "Implemented intuitive admin interface with clear violation tracking and reporting features.",
       liveUrl: "#",
       githubUrl: "#",
-      features: ["Student Database", "Violation Tracking", "Admin Dashboard", "Report Generation", "Email Notifications"]
+      features: ["Student Database", "Violation Tracking", "Admin Dashboard", "Report Generation"]
     },
   ];
 
@@ -205,7 +205,7 @@ function ProjectsContent({ setActiveTab, handleOpenProjectTab }: { setActiveTab:
             <h3 className="font-clash-semibold text-white mb-4">Contact</h3>
             <ul className="space-y-2 text-gray-600 font-clash text-sm">
               <li>
-                <a href="mailto:hello@clairecruz.dev" className="hover:text-[#76608f] transition-colors text-white">Email</a>
+                <a href="mailto:cruzclaire.shi@gmail.com" className="hover:text-[#76608f] transition-colors text-white">Email</a>
               </li>
               <li>
                 <a href="https://calendly.com/clairecruz/meeting" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Set a Meeting</a>

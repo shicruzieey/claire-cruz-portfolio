@@ -19,29 +19,29 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
 
   const latestWorks = [
     {
-      title: "Personal Brand Logo",
+      title: "David's Salon Management System",
       description:
-        "A modern, minimalist logo design that reflects personal brand identity with clean typography and meaningful symbolism.",
+        "A comprehensive salon management ecosystem featuring web admin panel, mobile apps, and AI-powered hairstyle recommendations using OpenAI API.",
       image: "/placeholder.svg?height=200&width=300",
-      category: "Branding",
-      year: "2024",
+      category: "Mobile & Web Dev",
+      year: "2025",
+      color: "from-purple-500 to-pink-600",
+    },
+    {
+      title: "COPit - Competitive Thrift Shopping",
+      description:
+        "2nd Place Winner at 'Automate the Future' Hackathon. A competitive thrift shopping app with Mine-Steal-Lock and bidding system.",
+      image: "/placeholder.svg?height=200&width=300",
+      category: "Mobile App",
+      year: "2025",
       color: "from-sage-400 to-sage-600",
     },
     {
-      title: "COIN - Crypto Dashboard",
+      title: "Mag-Grantees Scholarship System",
       description:
-        "A comprehensive cryptocurrency tracking dashboard with real-time data visualization and portfolio management features.",
+        "Scholarship management system for streamlining scholarship tracking, academic performance monitoring, and document submission.",
       image: "/placeholder.svg?height=200&width=300",
-      category: "Web Design",
-      year: "2024",
-      color: "from-blue-400 to-blue-600",
-    },
-    {
-      title: "Mogi-Gramies",
-      description:
-        "Social media platform design focused on community building with intuitive user experience and engaging interface.",
-      image: "/placeholder.svg?height=200&width=300",
-      category: "Mobile App",
+      category: "Web Development",
       year: "2024",
       color: "from-purple-400 to-purple-600",
     },
@@ -49,69 +49,69 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
 
   const services = [
     {
-      title: "Branding",
-      description: "Complete brand identity design including logos, color schemes, and brand guidelines.",
-      price: "Starting at ₱2,500 per project",
-      features: ["Logo Design", "Brand Guidelines", "Color Palette", "Typography"],
+      title: "UI/UX Design",
+      description: "User-centered design for web and mobile applications with focus on intuitive interfaces and seamless experiences.",
+      price: "Starting at ₱3,000 per project",
+      features: ["User Research", "Wireframing", "Prototyping", "User Testing"],
       icon: "🎨",
     },
     {
-      title: "Web Design",
-      description: "Modern, responsive websites that convert visitors into customers.",
-      price: "Starting at ₱5,000 per project",
-      features: ["Responsive Design", "UI/UX Design", "Prototyping", "User Testing"],
+      title: "Front-End Development",
+      description: "Converting designs into functional, interactive websites using React.js, Next.js, and modern web technologies.",
+      price: "Starting at ₱4,000 per project",
+      features: ["React.js/Next.js", "Responsive Design", "Performance Optimization", "Clean Code"],
       icon: "💻",
     },
     {
-      title: "Mobile App Design",
-      description: "Intuitive mobile app interfaces designed for iOS and Android platforms.",
+      title: "Mobile App Development",
+      description: "Building cross-platform mobile applications with React Native for iOS and Android.",
       price: "Starting at ₱7,500 per project",
-      features: ["iOS Design", "Android Design", "Wireframing", "User Flow"],
+      features: ["React Native", "Cross-Platform", "Firebase Integration", "App Store Ready"],
       icon: "📱",
     },
     {
-      title: "Front-End Dev",
-      description: "Converting designs into functional, interactive websites using modern technologies.",
-      price: "Starting at ₱4,000 per project",
-      features: ["HTML/CSS/JS", "React/Next.js", "Responsive Code", "Performance"],
-      icon: "⚡",
-    },
-    {
       title: "Social Media Design",
-      description: "Eye-catching social media graphics and templates for your brand.",
+      description: "Eye-catching social media graphics, posts, and templates that align with your brand identity.",
       price: "Starting at ₱1,500 per project",
       features: ["Post Templates", "Story Design", "Brand Consistency", "Multiple Formats"],
       icon: "📸",
+    },
+    {
+      title: "Graphic Design",
+      description: "Flyers, posters, brochures, and other marketing materials designed to capture attention.",
+      price: "Starting at ₱2,000 per project",
+      features: ["Print Design", "Digital Graphics", "Brand Materials", "Marketing Collateral"],
+      icon: "✨",
     },
   ]
 
   const productPicks = [
     {
-      name: "GMK67 Keyboard",
-      description: "Mechanical keyboard perfect for coding and design work.",
-      price: "₱3,999",
-      image: "/placeholder.svg?height=100&width=150",
+      name: "GMK67",
+      description: "65% Gasket Bluetooth 2.4G Wireless Hot-swappable",
+      price: "₱1,920",
+      image: "/images/shop/keyboard.png",
       rating: 5,
     },
     {
-      name: "Logitech MX Master 3",
-      description: "Precision mouse with customizable buttons for productivity.",
-      price: "₱4,500",
-      image: "/placeholder.svg?height=100&width=150",
+      name: "Logitech G102",
+      description: "Logitech Gaming Mouse G102 LIGHTSYNC",
+      price: "₱986",
+      image: "/images/shop/mouse.png",
       rating: 5,
     },
     {
-      name: "Apple Pencil",
-      description: "Essential tool for digital design and illustration work.",
-      price: "₱6,500",
-      image: "/placeholder.svg?height=100&width=150",
+      name: "Lenovo LOQ",
+      description: "Lenovo LOQ 15IRX9 83DV00DBPH",
+      price: "₱52,995",
+      image: "/images/shop/laptop.png",
       rating: 5,
     },
     {
-      name: "MacBook Pro M3",
-      description: "Powerful laptop for development and creative work.",
-      price: "₱89,999",
-      image: "/placeholder.svg?height=100&width=150",
+      name: "Maono DGM20",
+      description: "USB Microphone RGB Gaming Mic Condenser Mic Noise Cancelling",
+      price: "₱1,749",
+      image: "/images/shop/mic.png",
       rating: 5,
     },
   ]
@@ -144,10 +144,10 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
   ]
 
   const tools = [
-    { name: "Figma", category: "Design", icon: <img src="/tool-logos/figma.png" alt="Figma" className="h-8 mx-auto rounded-lg" /> },
-    { name: "Framer", category: "Prototyping", icon: <img src="/tool-logos/framer.png" alt="Framer" className="h-8 mx-auto rounded-lg" /> },
-    { name: "Photoshop", category: "Graphics", icon: <img src="/tool-logos/photoshop.png" alt="Photoshop" className="h-8 mx-auto rounded-lg" /> },
-    { name: "VS Code", category: "Development", icon: <img src="/tool-logos/vscode.png" alt="VS Code" className="h-8 mx-auto rounded-lg" /> },
+    { name: "Figma", category: "Design & Prototyping", icon: <img src="/images/tool-logos/figma.png" alt="Figma" className="h-8 mx-auto rounded-lg" /> },
+    { name: "Click Up", category: "Productivity", icon: <img src="/images/tool-logos/clickup.png" alt="Click Up" className="h-8 mx-auto rounded-lg" /> },
+    { name: "Photoshop", category: "Graphics", icon: <img src="/images/tool-logos/photoshop.png" alt="Photoshop" className="h-8 mx-auto rounded-lg" /> },
+    { name: "VS Code", category: "Development", icon: <img src="/images/tool-logos/vscode.png" alt="VS Code" className="h-8 mx-auto rounded-lg" /> },
   ]
 
   return (
@@ -208,9 +208,8 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
                 transition={{ delay: 0.3 }}
                 className="text-base sm:text-xl text-gray-300 mb-8 font-clash max-w-2xl mx-auto leading-relaxed"
               >
-                Hi I'm Claire Cruz, but you can call me Shi. I'm a <strong>Web and Graphic Designer</strong> and a{" "}
-                <strong>4th year IT student</strong>. I love creating unique, minimal designs that look good, feel good,
-                and work beautifully. Let's create something amazing together.
+                Hi I'm Claire Cruz, but you can call me Shi. I'm a <strong>UI/UX Designer</strong> and a{" "}
+                <strong>4th year IT student</strong>. I specialize in creating user-centered designs and developing responsive front-end and mobile applications using modern technologies. Let's create something amazing together.
               </motion.p>
 
               <motion.div
@@ -287,71 +286,6 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
         </div>
       </section>
 
-      {/* Work With Me Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4 font-clash-bold">Work with me</h2>
-              <p className="text-lg text-white font-clash max-w-2xl mx-auto">
-                Partnering with me means bringing your vision to life through creative, compelling, business-centered
-                solutions. I'm committed to delivering exceptional results that make your brand shine and engage your
-                users.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="text-3xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2 font-clash-semibold text-[#76608f]">{service.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 font-clash leading-relaxed line-clamp-2 h-10 overflow-hidden">{service.description}</p>
-                  <div className="text-[#76608f] font-clash-semibold mb-4">{service.price}</div>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600 font-clash">
-                        <Check className="w-4 h-4 text-[#76608f] mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    onClick={() => setActiveTab("contact")}
-                    className="w-full bg-[#76608f] hover:bg-[#6a5580] text-white font-clash-medium"
-                  >
-                    View Details
-                  </Button>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Custom Request */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="mt-12 p-8 rounded-lg shadow-sm border border-[#76608f] text-center bg-transparent"
-            >
-              <h3 className="text-2xl font-semibold mb-4 font-clash-semibold text-white">Can't decide or custom request?</h3>
-              <p className="mb-6 font-clash text-white">I'm flexible and probably I have a quote for you.</p>
-              <Button
-                onClick={() => setActiveTab("contact")}
-                className="bg-[#76608f] hover:bg-[#6a5580] text-white px-8 py-3 font-clash-medium"
-              >
-                Email me
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Product Picks Section */}
       <section className="py-20">
         <div className="container mx-auto px-6">
@@ -372,8 +306,12 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
                   className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer"
                   onClick={() => setActiveTab("shop")}
                 >
-                  <div className="h-32 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                    <span className="text-4xl">📦</span>
+                  <div className="h-32 bg-gray-100 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h3 className="font-semibold mb-2 font-clash-semibold text-gray-800 line-clamp-1">{product.name}</h3>
                   <p className="text-gray-600 text-sm font-clash line-clamp-2">{product.description}</p>
@@ -418,41 +356,55 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
                 are my creativity reviews.
               </p>
             </motion.div>
-            <div className="relative">
-              <Carousel className="w-full" setApi={setTestimonialApi}>
-                <CarouselContent>
-                  {testimonials.map((testimonial, index) => (
-                    <CarouselItem key={index} className="px-2 md:px-4">
-                      <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 max-w-xl w-full mx-auto"
-                      >
-                        <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-[#76608f] rounded-full flex items-center justify-center text-white font-clash-semibold mr-4">
-                            {testimonial.avatar}
+            <div className="flex items-center justify-center gap-4">
+              <button
+                onClick={() => testimonialApi?.scrollPrev()}
+                className="flex-shrink-0 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <div className="flex-1 max-w-2xl">
+                <Carousel className="w-full" setApi={setTestimonialApi}>
+                  <CarouselContent>
+                    {testimonials.map((testimonial, index) => (
+                      <CarouselItem key={index}>
+                        <motion.div
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
+                        >
+                          <div className="flex items-center mb-4">
+                            <div className="w-12 h-12 bg-[#76608f] rounded-full flex items-center justify-center text-white font-clash-semibold mr-4">
+                              {testimonial.avatar}
+                            </div>
+                            <div>
+                              <h4 className="font-semibold font-clash-semibold">{testimonial.name}</h4>
+                              <p className="text-gray-600 text-sm font-clash">{testimonial.role}</p>
+                            </div>
                           </div>
-                          <div>
-                            <h4 className="font-semibold font-clash-semibold">{testimonial.name}</h4>
-                            <p className="text-gray-600 text-sm font-clash">{testimonial.role}</p>
+                          <div className="flex mb-3">
+                            {Array.from({ length: testimonial.rating }, (_, i) => (
+                              <Star key={i} className="w-4 h-4 fill-[#76608f] text-[#76608f]" />
+                            ))}
                           </div>
-                        </div>
-                        <div className="flex mb-3">
-                          {Array.from({ length: testimonial.rating }, (_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-[#76608f] text-[#76608f]" />
-                          ))}
-                        </div>
-                        <p className="text-gray-700 font-clash leading-relaxed">{testimonial.content}</p>
-                      </motion.div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <div className="flex justify-center gap-4 mt-8">
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </div>
-              </Carousel>
+                          <p className="text-gray-700 font-clash leading-relaxed">{testimonial.content}</p>
+                        </motion.div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+              </div>
+              <button
+                onClick={() => testimonialApi?.scrollNext()}
+                className="flex-shrink-0 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -572,7 +524,7 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
           <h3 className="font-clash-semibold text-white mb-4">Contact</h3>
           <ul className="space-y-2 text-gray-600 font-clash text-sm">
             <li>
-              <a href="mailto:hello@clairecruz.dev" className="hover:text-[#76608f] transition-colors text-white">Email</a>
+              <a href="mailto:cruzclaire.shi@gmail.com" className="hover:text-[#76608f] transition-colors text-white">Email</a>
             </li>
             <li>
               <a href="https://calendly.com/clairecruz/meeting" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Set a Meeting</a>

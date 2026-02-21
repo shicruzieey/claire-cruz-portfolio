@@ -10,7 +10,7 @@ function ShopContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
       fullName: "GMK67",
       price: "₱1,920",
       description: "65% Gasket Bluetooth 2.4G Wireless Hot-swappable",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/shop/keyboard.png",
       category: "Keyboard",
     },
     {
@@ -19,7 +19,7 @@ function ShopContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
       fullName: "Logitech G102",
       price: "₱986",
       description: "Logitech Gaming Mouse G102 LIGHTSYNC",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/shop/mouse.png",
       category: "Mouse",
     },
     {
@@ -28,8 +28,17 @@ function ShopContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
       fullName: "Lenovo LOQ",
       price: "₱52,995",
       description: "Lenovo LOQ 15IRX9 83DV00DBPH",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/shop/laptop.png",
       category: "Laptop",
+    },
+    {
+      id: 4,
+      name: "Maono DGM20",
+      fullName: "Maono DGM20/DGM20S",
+      price: "₱1,749",
+      description: "USB Microphone RGB Gaming Mic Condenser Mic Noise Cancelling",
+      image: "/images/shop/mic.png",
+      category: "Microphone",
     },
   ];
 
@@ -66,25 +75,13 @@ function ShopContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
                 className="bg-white rounded-lg shadow-sm border border-[#76608f] overflow-hidden hover:shadow-lg transition-all duration-300 group"
               >
                 <div className="h-64 bg-gray-50 relative overflow-hidden flex items-center justify-center p-8">
-                  <div className="text-6xl opacity-30">
-                    {product.category === "Keyboard" && "⌨️"}
-                    {product.category === "Mouse" && "🖱️"}
-                    {product.category === "Laptop" && "💻"}
-                  </div>
+                  <img 
+                    src={product.image} 
+                    alt={product.fullName}
+                    className="w-full h-full object-contain"
+                  />
                   <div className="absolute top-4 left-4 bg-white rounded-lg px-3 py-1 shadow-sm">
                     <span className="text-xs font-clash-medium text-gray-600">{product.name}</span>
-                  </div>
-                  {/* Connectivity icons */}
-                  <div className="absolute bottom-4 left-4 flex space-x-2">
-                    <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                      <span className="text-xs">💰</span>
-                    </div>
-                    <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                      <span className="text-xs">📶</span>
-                    </div>
-                    <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                      <span className="text-xs">🔋</span>
-                    </div>
                   </div>
                 </div>
                 <div className="p-6">
@@ -179,7 +176,7 @@ function ShopContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
             <h3 className="font-clash-semibold text-white mb-4">Contact</h3>
             <ul className="space-y-2 text-gray-600 font-clash text-sm">
               <li>
-                <a href="mailto:hello@clairecruz.dev" className="hover:text-[#76608f] transition-colors text-white">Email</a>
+                <a href="mailto:cruzclaire.shi@gmail.com" className="hover:text-[#76608f] transition-colors text-white">Email</a>
               </li>
               <li>
                 <a href="https://calendly.com/clairecruz/meeting" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Set a Meeting</a>

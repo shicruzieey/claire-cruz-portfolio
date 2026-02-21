@@ -13,8 +13,8 @@ export default function DesktopEnvironment() {
   const [currentDate, setCurrentDate] = useState("")
   const [isKeyboardUser, setIsKeyboardUser] = useState(false)
   const professions = [
-    "Web & Mobile Designer",
     "UI/UX Designer",
+    "Web & Mobile Developer",
     "Graphics Designer"
   ];
   const [currentProfession, setCurrentProfession] = useState(0);
@@ -104,7 +104,7 @@ export default function DesktopEnvironment() {
       {/* Desktop Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/desktop-wallpaper.jpg)' }}
+        style={{ backgroundImage: 'url(/images/hero/desktop-wallpaper.jpg)' }}
       />
       {/* Aurora Animated Overlay */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -136,7 +136,7 @@ export default function DesktopEnvironment() {
         >
           <div className="w-12 h-12 rounded-lg shadow-lg border border-white/20 flex items-center justify-center mb-1 group-hover:shadow-xl group-hover:border-sage-300 transition-all duration-300 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-sage-400/10 to-purple-500/10 rounded-lg"></div>
-            <img src="/clairecruz-logo.png" alt="Claire Cruz" className="w-7 h-7 object-contain relative z-10" />
+            <img src="/images/profile/clairecruz-logo.png" alt="Claire Cruz" className="w-7 h-7 object-contain relative z-10" />
           </div>
           <span className="text-white text-xs font-poppins-medium drop-shadow-lg">Claire Cruz</span>
         </motion.div>
@@ -241,7 +241,7 @@ export default function DesktopEnvironment() {
           >
             {/* Logo image */}
             <img 
-              src="/clairecruz-logo.png" 
+              src="/images/profile/clairecruz-logo.png" 
               alt="Claire Cruz Portfolio Logo" 
               className="w-24 h-24 object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_20px_rgba(118,96,143,0.8)]"
               onError={(e) => {

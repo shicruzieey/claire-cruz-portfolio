@@ -420,16 +420,15 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
       return (
         <ProjectDetailsContent
           projectId={projectId}
+          handleOpenProjectTab={handleOpenProjectTab}
+          setActiveTab={setActiveTab}
           onClose={() => {
             const idx = tabOrder.indexOf(activeTab);
             const newTabOrder = tabOrder.filter(t => t !== activeTab);
             setTabOrder(newTabOrder);
-            // Switch to previous tab if available, otherwise home
-            if (newTabOrder.length > 0) {
-              setActiveTab(newTabOrder[Math.max(0, idx - 1)]);
-            } else {
-              setActiveTab('home');
-            }
+            setDynamicTabs(dynamicTabs.filter(t => t.id !== activeTab));
+            // Switch to projects tab
+            setActiveTab('projects');
           }}
         />
       );
@@ -485,7 +484,7 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
     // Load image once
     useEffect(() => {
       const img = new window.Image();
-      img.src = '/claire.jpg';
+      img.src = '/images/profile/claire.jpg';
       birdImg.current = img;
     }, []);
 
@@ -1052,14 +1051,17 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
 
               <div className="flex justify-center space-x-4 mb-6">
                 {[
-                  { icon: Linkedin, color: "hover:text-blue-500" },
-                  { icon: Instagram, color: "hover:text-pink-500" },
-                  { icon: Twitter, color: "hover:text-blue-400" },
-                  { icon: Github, color: "hover:text-gray-300" },
-                  { icon: Mail, color: "hover:text-green-500" },
+                  { icon: Linkedin, color: "hover:text-blue-500", url: "https://www.linkedin.com/in/clairecruz" },
+                  { icon: Instagram, color: "hover:text-pink-500", url: "https://www.instagram.com/clairecruz" },
+                  { icon: Twitter, color: "hover:text-blue-400", url: "https://twitter.com/clairecruz" },
+                  { icon: Github, color: "hover:text-gray-300", url: "https://github.com/clairecruz" },
+                  { icon: Mail, color: "hover:text-green-500", url: "mailto:cruzclaire.shi@gmail.com" },
                 ].map((social, index) => (
-                  <motion.div
+                  <motion.a
                     key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + index * 0.1 }}
@@ -1068,7 +1070,7 @@ export default function BrowserPortfolio({ onClose, onMinimize, onMaximize }: Br
                     className={`text-gray-400 cursor-pointer transition-colors ${social.color}`}
                   >
                     <social.icon className="w-6 h-6" />
-                  </motion.div>
+                  </motion.a>
                 ))}
               </div>
 

@@ -9,24 +9,25 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
   const [hoveredSetup, setHoveredSetup] = useState<number | null>(null)
   const [mousePosSetup, setMousePosSetup] = useState<{x: number, y: number}>({x: 0, y: 0})
   const skills = [
-    "UI/UX Design",
-    "Responsive Website Design",
-    "Mobile App Design",
-    "Graphic Design",
+    "UI/UX Design (Web & Mobile)",
     "Front-End Development",
-    "Brand Identity",
-    "User Research",
-    "Prototyping",
+    "Mobile App Development",
+    "Social Media Content Design",
+    "Responsive Website Design",
+    "Flyers, Posters & Brochures",
+    "Basic Video Editing",
+    "User Research & Prototyping",
   ]
 
-  const tools = ["Adobe Creative Suite", "Figma", "HTML & CSS", "React Native (learning)", "JavaScript", "MySQL"]
+  const tools = ["Figma", "HTML & CSS", "JavaScript", "React.js", "React Native", "Tailwind CSS", "Firebase", "Canva", "Capcut", "Microsoft Office"]
 
   const currentSetup = [
     { item: "Current keyboard", detail: "GMK67 — lubed Akko Piano V3s with foam & tape mod" },
     { item: "Current mouse", detail: "Logitech G102 Lightsync Gaming Mouse" },
-    { item: "On repeat", detail: "Jump by Blackpink" },
-    { item: "Favorite K-drama right now", detail: "Weak Hero" },
-    { item: "Go-to comfort food", detail: "Iced White Mocha & Buldak Carbonara" },
+    { item: "Current laptop", detail: "Lenovo LOQ 15IRX9" },
+    { item: "On repeat", detail: "Fly by Nicki Minaj" },
+    { item: "Favorite Show", detail: "Stranger Things" },
+    { item: "Go-to Coffee", detail: "Hot Latte w Sugar" },
   ]
 
   const education = [
@@ -41,108 +42,119 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
 
   const projects = [
     {
-      id: "personal-brand-logo",
-      period: "June 2024",
-      title: "Personal Brand Logo",
-      category: "Logo Design, Brand Identity",
+      id: "davids-salon",
+      period: "June 2025 - February 2026",
+      title: "David's Salon Operations Management System",
+      category: "Mobile App & Web Development, UI/UX Design",
       description:
-        "A symbolic monogram formed from the letter S and two mirrored Cs, representing my nickname, Shi, and my initials. The design reflects my minimalist personality through clean lines and geometric precision, embodying both simplicity and sophistication and clarity, creating a logo that feels both modern and uniquely mine.",
-      technologies: ["Adobe Illustrator", "Adobe Photoshop", "Figma"],
-      role: "Lead Designer",
-      team: "Solo Project",
-      challenges: "Creating a unique monogram that represents both 'Shi' and 'Claire Cruz' while maintaining simplicity and memorability.",
-      solutions: "Designed a minimalist logo combining the letter S with mirrored Cs, creating a balanced and recognizable brand identity.",
+        "A comprehensive salon management system featuring web admin panel, mobile apps for clients and stylists, and an AI-powered hairstyle recommendation kiosk. Built with React.js, React Native, Tailwind CSS, and Firebase with OpenAI API integration for smart recommendations.",
+      technologies: ["React.js", "React Native", "Tailwind CSS", "Firebase", "OpenAI API", "Figma"],
+      role: "Mobile App & Web Developer, UI/UX Designer",
+      team: "OJT Team Project",
+      challenges: "Designing and developing three interconnected systems (web, mobile, kiosk) with real-time synchronization and AI integration.",
+      solutions: "Implemented Firebase for real-time data sync, designed complete UI/UX in Figma, and integrated OpenAI API for personalized hairstyle recommendations.",
       liveUrl: "#",
       githubUrl: "#",
-      features: ["Brand Identity", "Logo Design", "Style Guide", "Mockups"],
-      color: "from-gray-800 to-gray-900"
+      features: ["Appointment Scheduling", "POS System", "Inventory Management", "CRM", "Analytics Dashboard", "AI Hairstyle Recommendations"],
+      color: "from-purple-500 to-pink-600"
     },
     {
-      id: "coin",
-      period: "March 2024 - April 2024",
-      title: "COIN",
-      category: "E-commerce",
+      id: "copit",
+      period: "March 2025 - April 2025",
+      title: "COPit - Competitive Thrift Shopping App",
+      category: "Mobile App Development, UI/UX Design",
       description:
-        "COIN is a competitive thrift shopping web app that gamifies secondhand buying through a unique blue-clock and leaderboard system, promoting sustainable fashion consumption.",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "Socket.io"],
-      role: "Full Stack Developer",
-      team: "3 Developers",
-      challenges: "Implementing real-time bidding system with countdown timers and managing concurrent users.",
-      solutions: "Built a robust real-time system using Socket.io for live updates and implemented a queue system for bid management.",
+        "2nd Place Winner at 'Automate the Future' Hackathon. A competitive thrift shopping mobile app featuring a unique Mine-Steal-Lock and bidding system that gamifies secondhand buying, promoting sustainable fashion consumption.",
+      technologies: ["HTML", "CSS", "JavaScript", "Figma"],
+      role: "Front-End Developer & UI/UX Designer",
+      team: "Duo Project",
+      challenges: "Creating an engaging competitive shopping experience with real-time interactions and intuitive game mechanics.",
+      solutions: "Designed innovative Mine-Steal-Lock system with responsive UI and seamless bidding experience focused on user engagement.",
       liveUrl: "#",
       githubUrl: "#",
-      features: ["Real-time Bidding", "User Authentication", "Payment Integration", "Leaderboard System", "Mobile Responsive"],
+      features: ["Mine-Steal-Lock System", "Real-time Bidding", "User Authentication", "Leaderboard", "Mobile Responsive"],
       color: "from-sage-400 to-sage-600"
     },
     {
-      id: "mag-gramtees",
+      id: "mag-grantees",
       period: "August 2024 - November 2024",
-      title: "Mag-Gramtees",
-      category: "Web Development",
+      title: "Mag-Grantees: Magsaysay Scholarship Management System",
+      category: "Web Development, UI/UX Design",
       description:
-        "Development of a web-based application designed to help streamline scholarship management for scholars by streamlining scholarship tracking, academic performance monitoring, document submission, and communication between scholars and administrators.",
-      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
-      role: "Frontend Developer",
-      team: "4 Developers",
-      challenges: "Creating an intuitive interface for scholarship management with complex data relationships.",
-      solutions: "Designed a user-friendly dashboard with role-based access control and comprehensive reporting features.",
+        "A comprehensive scholarship management system designed to streamline scholarship tracking, academic performance monitoring, document submission, and communication between scholars and administrators.",
+      technologies: ["HTML", "CSS", "JavaScript", "Figma"],
+      role: "Front-End Developer & UI/UX Designer",
+      team: "Group Project",
+      challenges: "Creating an intuitive interface for complex scholarship data management with multiple user roles and document handling.",
+      solutions: "Designed user-friendly dashboard with role-based access, optimized for responsiveness and cross-browser compatibility.",
       liveUrl: "#",
       githubUrl: "#",
-      features: ["Dashboard Analytics", "Document Management", "Notification System", "Reporting Tools", "Role-based Access"],
+      features: ["Dashboard Analytics", "Document Management", "Performance Tracking", "User Roles", "Responsive Design"],
       color: "from-purple-400 to-purple-600"
     },
     {
       id: "svms",
       period: "January 2024 - April 2024",
-      title: "SVMS",
-      category: "Web Development",
-      description:
-        "A web-based system developed to streamline the reporting and management of student violations for the Lyceum of Subic Bay's Office of Student Affairs, ensuring efficient case management and transparency.",
-      technologies: ["React", "Node.js", "MySQL", "Express", "Bootstrap"],
-      role: "Full Stack Developer",
-      team: "2 Developers",
+      title: "Student Violation Management System",
+      category: "Web Development, UI/UX Design",
+      description: "A web-based system developed for Lyceum of Subic Bay's Office of Student Affairs to streamline the reporting and management of student violations, ensuring efficient case management and transparency.",
+      technologies: ["HTML", "CSS", "JavaScript", "MySQL"],
+      role: "Front-End Developer & UI/UX Designer",
+      team: "Group Project",
       challenges: "Designing a secure system for handling sensitive student data while maintaining ease of use for administrators.",
-      solutions: "Implemented role-based authentication, data encryption, and an intuitive admin interface for violation management.",
+      solutions: "Implemented intuitive admin interface with clear violation tracking, reporting features, and accessibility standards.",
       liveUrl: "#",
       githubUrl: "#",
-      features: ["Student Database", "Violation Tracking", "Admin Dashboard", "Report Generation", "Email Notifications"],
+      features: ["Student Database", "Violation Tracking", "Admin Dashboard", "Report Generation", "Case Management"],
       color: "from-purple-800 to-purple-900"
     },
   ]
 
   const workExperience = [
     {
+      period: "June 2025 - February 2026",
+      position: "OJT - Mobile App and Web Developer & UI/UX Designer",
+      company: "David's Salon",
+      description:
+        "Completed 486 hours of on-the-job training developing a comprehensive salon management system. Designed UI/UX prototypes in Figma and built web and mobile applications using React.js, React Native, Tailwind CSS, and Firebase. Implemented AI-powered hairstyle recommendations using OpenAI API.",
+    },
+    {
       period: "November 2024 - January 2025",
       position: "Freelance Designer (Remote)",
-      company: "KASA Karaoke Bar & Restaurant",
+      company: "TAGAI Karaoke Bar & Restaurant",
       description:
-        "Designed promotional materials, social media visuals, and promotional materials for a Japan-based Filipino karaoke bar and restaurant, aligning design with both Filipino culture and local market appeal.",
+        "Designed and implemented visual assets, including motion graphics, to enhance video storytelling for a Japan-based Filipino karaoke bar and restaurant. Worked closely with the team to ensure videos met quality standards and deadlines, aligning design with both Filipino culture and local market appeal.",
     },
     {
       period: "August 2023 - October 2023",
       position: "Marketing Video Editor (Remote)",
-      company: "Barcamp Shop Campaign",
+      company: "Barestep Shoe Company",
       description:
-        "Produced engaging marketing videos for social media campaigns, showcasing visual narratives and brand stories. Collaborated remotely with the creative team to increase viewer engagement and drive brand awareness.",
+        "Produced engaging marketing videos for social media campaigns, showcasing visual narratives and brand stories. Assisted in brainstorming and conceptualizing video content strategies to boost brand visibility and engagement, working remotely with the creative team.",
     },
   ]
 
   const awards = [
     {
+      year: "October 2025",
+      title: "Automate the Future Hackathon",
+      subtitle: "2nd Place Winner & Best Presenter - COPit Project",
+    },
+    {
       year: "2022 - Present",
-      title: "Lyceum of Subic Bay Inc., SUBIC PH",
+      title: "Lyceum of Subic Bay Inc., SUBMA PH",
       subtitle: "Consistent Dean's Lister Award",
     },
     {
       year: "June 2022",
       title: "Columban College Barretto",
-      subtitle: "Young Entrepreneur",
+      subtitle: "Young Entrepreneur Award",
     },
   ]
 
   const professions = [
-    "Web & Mobile Designer",
     "UI/UX Designer",
+    "Web & Mobile Developer",
     "Graphics Designer"
   ];
   const [currentProfession, setCurrentProfession] = useState(0);
@@ -184,7 +196,7 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
         {/* Profile Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="flex items-center mb-8">
           <img
-            src="/claire.jpg"
+            src="/images/profile/claire.jpg"
             alt="Claire Cruz"
             className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-[#76608f]"
           />
@@ -204,22 +216,13 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
           <h2 className="text-xl font-clash-bold text-white mb-4">Bio</h2>
           <div className="space-y-4 text-gray-300 font-clash leading-relaxed">
             <p>
-              Hi, I'm Claire Cruz (<strong className="text-[#76608f]">Shi</strong>), a <strong>Web</strong> and <strong>Graphic Designer</strong> and a <strong>4th-year IT student</strong> with a passion for
-              creating simple, meaningful, and user-friendly digital experiences. My journey into design began during my
-              first year of college when I discovered the power of visual storytelling. More than 1 played Call of Duty
-              Mobile and began designing tournament posters for the community and that's when I fell in love with
-              design.
+              Hi, I'm Claire Jessica Cruz (<strong className="text-[#76608f]">Shi</strong>), a <strong>UI/UX Designer</strong> and <strong>4th-year IT student</strong> at Lyceum of Subic Bay with experience in web and mobile application development. I specialize in creating user-centered designs and developing responsive front-end and mobile applications using modern technologies like React.js, React Native, and Firebase.
             </p>
             <p>
-              Now, I specialize in crafting clean, responsive layouts that help brands stand out across platforms.
-              Whether it's intuitive UI/UX, branding, or social media creatives, I approach every project with curiosity
-              and a commitment to delivering designs that truly resonate.
+              My journey into design began during my first year of college when I discovered the power of visual storytelling through designing tournament posters for the Call of Duty Mobile community. Since then, I've worked on real-world projects including a salon management system, scholarship tracking platforms, and even won 2nd place at the "Automate the Future" Hackathon with my competitive thrift shopping app, COPit.
             </p>
             <p>
-              Other than designing, you'll usually find me hanging out in local coffee shops ☕, going for a jog to
-              clear my mind, or unwinding with a good K-drama. They keep me calm and inspired. I'm always on the lookout
-              for new tools, trends, and opportunities to grow, and I'm excited to work on new world projects that make
-              a difference.
+              I'm highly organized and detail-oriented, ensuring projects are delivered on time and aligned with user needs. When I'm not designing or coding, you'll find me hanging out in local coffee shops ☕, going for a jog to clear my mind, or unwinding with a good Netflix series. I'm always on the lookout for new tools, trends, and opportunities to grow.
             </p>
           </div>
         </motion.section>
@@ -298,9 +301,10 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                 <span className="text-sm mr-2">
                   {setup.item.includes("keyboard") && "⌨️"}
                   {setup.item.includes("mouse") && "🖱️"}
+                  {setup.item.includes("laptop") && "💻"}
                   {setup.item.includes("On repeat") && "🎧"}
-                  {setup.item.includes("drama") && "📺"}
-                  {setup.item.includes("comfort food") && "☕"}
+                  {setup.item.includes("Show") && "📺"}
+                  {setup.item.includes("Coffee") && "☕"}
                 </span>
                 <div className="flex-1">
                   <span className="font-clash-medium text-white">{setup.item}:</span>
@@ -309,11 +313,12 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                 {hoveredSetup === index && (
                   <motion.img
                     src={
-                      setup.item.includes("keyboard") ? "/current-likes/keyboard.png" :
-                      setup.item.includes("mouse") ? "/current-likes/mouse.png" :
-                      setup.item.includes("On repeat") ? "/current-likes/song.png" :
-                      setup.item.includes("drama") ? "/current-likes/kdrama.png" :
-                      setup.item.includes("comfort food") ? "/current-likes/comfortfood.png" :
+                      setup.item.includes("keyboard") ? "/images/setup/current-likes/keyboard.png" :
+                      setup.item.includes("mouse") ? "/images/setup/current-likes/mouse.png" :
+                      setup.item.includes("laptop") ? "/images/setup/current-likes/laptop.png" :
+                      setup.item.includes("On repeat") ? "/images/setup/current-likes/song.png" :
+                      setup.item.includes("Show") ? "/images/setup/current-likes/show.png" :
+                      setup.item.includes("Coffee") ? "/images/setup/current-likes/coffee.png" :
                       ""
                     }
                     alt="Setup preview"
@@ -464,7 +469,7 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
                 </motion.div>
                 {hoveredProject === index && (
                   <motion.img
-                    src="/desktop-wallpaper.jpg"
+                    src="/images/hero/desktop-wallpaper.jpg"
                     alt="Project preview"
                     initial={{ opacity: 0, scale: 0.95, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -553,13 +558,13 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
             ))}
           </div>
         </motion.section>
-      </div>
+
       {/* Footer timestamp */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.1 }}
-        className="text-center pt-16 border-t border-gray-200 mt-8 text-white max-w-4xl mx-auto"
+        className="text-center pt-16 border-t border-gray-200 mt-16 text-white"
       >
         <p className="text-2xl font-clash-bold text-white mb-2">
             {new Date().toLocaleDateString("en-US", {
@@ -579,7 +584,7 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="grid md:grid-cols-4 gap-8 mt-8 pt-8 text-white max-w-4xl mx-auto"
+        className="grid md:grid-cols-4 gap-8 mt-16 pt-8 text-white"
       >
         <div>
           <h3 className="font-clash-semibold text-white mb-4">Index</h3>
@@ -615,9 +620,9 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
               </button>
             </li>
             <li>
-              <a href="#" className="hover:text-[#76608f] transition-colors text-white">
+              <button onClick={() => setActiveTab("tools")} className="hover:text-[#76608f] transition-colors text-white">
                 Tools
-              </a>
+              </button>
             </li>
           </ul>
         </div>
@@ -625,7 +630,7 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
           <h3 className="font-clash-semibold text-white mb-4">Contact</h3>
           <ul className="space-y-2 text-gray-600 font-clash text-sm">
             <li>
-              <a href="mailto:hello@clairecruz.dev" className="hover:text-[#76608f] transition-colors text-white">Email</a>
+              <a href="mailto:cruzclaire.shi@gmail.com" className="hover:text-[#76608f] transition-colors text-white">Email</a>
             </li>
             <li>
               <a href="https://calendly.com/clairecruz/meeting" target="_blank" rel="noopener noreferrer" className="hover:text-[#76608f] transition-colors text-white">Set a Meeting</a>
@@ -649,10 +654,11 @@ function AboutContent({ handleOpenProjectTab, setActiveTab }: { handleOpenProjec
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.3 }}
-        className="text-center mt-8 pt-8 pb-20 border-t border-gray-200 text-white max-w-4xl mx-auto"
+        className="text-center mt-8 pt-8 pb-6 border-t border-gray-200 text-white max-w-4xl mx-auto"
       >
         <p className="text-white font-clash text-sm">© 2025 Claire Cruz</p>
       </motion.div>
+      </div>
     </div>
   );
 }
