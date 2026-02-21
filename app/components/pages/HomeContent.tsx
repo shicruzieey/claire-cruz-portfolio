@@ -359,7 +359,7 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => testimonialApi?.scrollPrev()}
-                className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors touch-manipulation"
+                className="hidden sm:flex flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 items-center justify-center hover:bg-gray-50 transition-colors touch-manipulation"
                 aria-label="Previous testimonial"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -400,7 +400,7 @@ function HomeContent({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
               </div>
               <button
                 onClick={() => testimonialApi?.scrollNext()}
-                className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors touch-manipulation"
+                className="hidden sm:flex flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 items-center justify-center hover:bg-gray-50 transition-colors touch-manipulation"
                 aria-label="Next testimonial"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
